@@ -1,48 +1,98 @@
-<h2>How to use your own domain for github page?</h2>
-<a href="https://www.youtube.com/watch?v=sTBY0D4gLg4" target="_blank">View my tutorials video here!</a>
-<br><br><br>
-<h2>How to use this template?</h2>
-You can fork this project to your own project. <br>
-Ex: fork and rename this repository to "yourname", you'll get the following address: yourusername.github.io/yourname
-<br>Or clone it to your local (by using gitGUI or from cmd line), modify something and push from local to your account. <br>
-<h2>How to change my title and something else? </h2>
-Go to <b>_config.yml</b> file and change to what you want, you can add some social account to your profile view.
+# { Personal } Jekyll Theme
+![Build Status](https://travis-ci.org/le4ker/personal-jekyll-theme.svg?branch=master)
+![license](https://img.shields.io/badge/license-MIT-blue.svg?link=https://github.com/dono-app/ios/blob/master/LICENSE)
+[![Join the chat at https://gitter.im/PanosSakkos/personal-jekyll-theme](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/panossakkos/personal-jekyll-theme?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-<h2>How to create new posts ?</h2>
-create new file in <b>_posts</b> folder, the name of the file should be begin with "yyyy-mm-dd" and separated by "-" (dash) and end with ".md" (markdown format). Ex: "2015-05-12-documents.md" <br>
-In the beginning of the content, copy and paste following:
+{ Personal } is a free responsive Jekyll theme, about you :wink:
+
+You can watch it in action [here](https://le4ker.github.io/personal-jekyll-theme/)!
+
+<img src="https://github.com/le4ker/personal-jekyll-theme/raw/master/.github/personal-mobile.mov.gif" height="480">
+
+<img src="https://github.com/le4ker/personal-jekyll-theme/raw/master/.github/personal-desktop.mov.gif" height="600" width="960">
+
+## What value does { Personal } add
+
+* Fork of [Timeline](https://github.com/kirbyt/timeline-jekyll-theme) (mashup of [Grayscale by Start Bootstrap](https://github.com/IronSummitMedia/startbootstrap-grayscale) and [Agency Jekyll Theme](https://github.com/y7kim/agency-jekyll-theme))
+  * Modern and minimal design
+    * Responsive templates for home page, blog archive and posts. Looks great on mobile, tablet, and desktop devices
+    * Sweet animations
+    * Gracefully degrades in older browsers. Compatible with Internet Explorer 8+ and all modern browsers
+  * Timeline
+    * Tell your story so far with a sleek timeline of dates, pictures and descriptions
+  * White on black text, making the reading experience tireless
+  * Google analytics  
+* Customization and full control of your website and blog through the site config
+* Customization of the website's coloring
+* Blogging functionality
+  * Preview of the latest post in the home page
+  * Archive page
+  * Syntax highlighting
+  * Emojis
+  * Gesture navigation in archive and post pages by swiping
+  * Hashtags
+  * Categories
+  * Disqus comments
+  * Bootstrap share buttons
+  * RSS feed
+* Author blurb under the posts
+* 404 page
+* iOS and Android Web App mode
+* Enforcing of https protocol
+* Protection from email harvesting
+* Sitemap
+* Travis CI integration with [html-proofer](https://github.com/gjtorikian/html-proofer)
+
+## Documentation
+
+The theme contains documentation in the form of [blog posts](https://le4ker.github.io/personal-jekyll-theme/blog/index.html).
+
+## How to run locally
+
+First, you need to install jekyll and the dependencies of { Personal } by running:
+
+```shell
+./scripts/install
+```
+
+Then, you can build and serve your website by simply running:
+
+```shell
+./scripts/serve-production
+```
+
+To serve across lan (requires su to forward the port 4000 over lan):
+
+```shell
+./scripts/serve-lan-production
+```
+
+### Docker
+
+Run using Docker:
 
 ```
---- 
-layout: post
-title:
-description: "abcd"
-modified: 2014-12-23
-tags: [abc, def]
----
+docker run --rm -it -p 4000:4000 -v "$PWD:/srv/jekyll" jekyll/jekyll jekyll serve --watch --host "0.0.0.0" --config _config.yml,_config.dev.yml
 ```
 
-<br>
-change your title, tag, modified date time...
-
-<br>
-<h2>How to post code?</h2>
-use: <br>
-
+Run using Docker with Docker Compose:
 ```
-{% highlight css %}
-{% endhighlight %}
+docker-compose up
 ```
 
-<br>
-you can change "css" to some other languages such as cpp, java, html...
-<br>
-<br>
-<h2>How to add or change menu on the left side? </h2>
-Go to <b> _includes/navigation.html </b>
+## OSS used in { Personal }
 
-<h2>How to change color or anything else in the fixed navigation bar at the top? </h2>
-Go to <b>_includes/head.html</b>
+One of the reasons { Personal } is real is the following OSS projects:
 
-<h2>How about the background color?</h2>
-Go to <b>_sass/_page.scss</b>
+  1. [Grayscale](http://startbootstrap.com/template-overviews/grayscale/)
+  2. [hammer.js](https://hammerjs.github.io/)
+  3. [highlightjs](https://highlightjs.org/)
+  4. [RRSSB](https://github.com/kni-labs/rrssb)
+  5. [Timeline](https://github.com/kirbyt/timeline-jekyll-theme)
+  6. [typed.js](https://github.com/mattboldt/typed.js/)
+
+<div style="font-size:16px;margin:0 auto;width:300px">
+    <a href="https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+    </a>
+</div>

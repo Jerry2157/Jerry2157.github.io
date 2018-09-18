@@ -1,59 +1,67 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-{% include head.html %}
-</head>
 
-<body id="post" {% if page.image.feature %}class="feature"{% endif %}>
+<!-- Post Layout Start -->
 
-{% include browser-upgrade.html %}
-{% include navigation.html %}
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
 
-{% if page.image.feature %}
-<div class="entry-header">
-  {% if page.image.credit %}<div class="image-credit">Image source: {% if page.image.creditlink %}<a href="{{ page.image.creditlink }}">{% endif %}{{ page.image.credit }}{% if page.image.creditlink %}</a>{% endif %}</div><!-- /.image-credit -->{% endif %}
-  <div class="entry-image">
-    <img src="{{ site.url }}/images/{{ page.image.feature }}" alt="{{ page.title }}">
-  </div><!-- /.entry-image -->
-</div><!-- /.entry-header -->
-{% endif %}
+  {% include head.html %}
 
-<div id="main" role="main">
-  <article class="hentry">
-    <header class="header-title">
-      <div class="header-title-wrap">
-        {% if page.link %}
-          <h1 class="entry-title"><i class="fa fa-bookmark permalink"></i> <a href="{{ page.link }}">{{ page.title }}</a></h1>
-        {% else %}
-          <h1 class="entry-title"><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
-        {% endif %}
-        <h2><span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></span></h2>
-        {% if site.reading_time %}
-        <p class="entry-reading-time">
-          <i class="fa fa-clock-o"></i>
-          {% assign readtime = content | number_of_words | divided_by:site.words_per_minute %}
-          Reading time ~{% if readtime <= 1 %}1 minute{% else %}{{ readtime }} minutes{% endif %}
-        </p><!-- /.entry-reading-time -->
-        {% endif %}
-      </div><!-- /.header-title-wrap -->
-    </header>
-    <div class="entry-content">
-      {{ content }}
-    </div><!-- /.entry-content -->
-    {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}
-  </article>
-</div><!-- /#main -->
+  <body>
 
-<div class="footer-wrapper">
-  <footer role="contentinfo">
+    {% include navigation.html %}
+
+    <section id="post" class="container content-section text-center">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          {% include swipe-instructions.html %}
+
+          <h1><strong>{{ page.title }}</strong></h1>
+          <h4>
+            <strong>{{ page.date | date_to_string }}</strong>
+            <small>
+              . category:
+              <a class="category" href="{{site.baseurl}}/categories/{{page.category | downcase}}.html">
+                {{ page.category }}
+              </a>.
+              <a href="{{site.baseurl}}{{page.url }}#disqus_thread">Comments</a>
+              <br />
+              {% for tag in page.tags %}
+                <a class="tag" href="{{site.baseurl}}/tags/{{tag | downcase}}.html">#{{ tag }}</a>
+              {% endfor %}
+            </small>
+          </h4>
+
+          <section class="text-justify">
+            {{ page.content | markdownify }}
+          </section>
+
+          {% include share.html %}
+
+          {% if jekyll.environment == "production" %}
+            {% include comments.html %}
+          {% endif %}
+
+
+          <hr />
+
+          {% if site.author_blurb %}
+          <div class="author row">
+            <img class="col-xs-4 col-sm-3 col-md-2" src="{{site.baseurl}}{{site.author_blurb_image}}" alt="Me" />
+            <p class="col-xs-8 col-sm-9 col-md-10">
+              {{ site.author_blurb }}
+            </p>
+          </div>
+          {% endif%}
+        </div>
+      </div>
+    </section>
+
     {% include footer.html %}
-  </footer>
-</div><!-- /.footer-wrapper -->
 
-{% include scripts.html %}	        
+    {% include js.html %}
 
-</body>
+  </body>
 </html>
+
+<!-- Post Layout End -->
